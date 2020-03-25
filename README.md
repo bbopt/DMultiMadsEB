@@ -9,7 +9,7 @@ It aims at guaranteeing the reproducibility of the experiments described in this
 
 ## Use
 
-To use DMulti-MADS, $\texttt{Julia}$  $\geq 1.4$ is required. One can type the following commands, at the root of this repertory:
+To use DMulti-MADS, Julia >= 1.4 is required. One can type the following commands, at the root of this repertory:
 ````
 julia> ]
 
@@ -23,16 +23,16 @@ A simple example can be found in the *Examples/* folder.
 
 ## Problems
 
-This folder contains an implementation of all multiobjective benchmark problems used in the article implemented in $\texttt{Matlab}$, $\texttt{Julia}$ and for the $\texttt{Nomad}$ (Bimads) software.
+This folder contains an implementation of all multiobjective benchmark problems used in the article implemented in Matlab, Julia and for the Nomad (Bimads) software.
 Researchers should not reimplement all the time benchmarks.
 
-> Do you have an implementation in $\texttt{Python}$ ?·
+> Do you have an implementation in Python ?·
 
-Infortunately not, but feel free to do it. We recommand $\texttt{Julia}$ if you want to implement a challenger algorithm. It is quite fast and free.
+Infortunately not, but feel free to do it. We recommand Julia if you want to implement a challenger algorithm. It is quite fast and free.
 
 ## Scripts
 
-This folder contains the scripts used to generate benchmark caches analyzed in the article. One has to precise the path for the generation folder, and the benchmark folder. These scripts require the $\texttt{Matlab}$ software.
+This folder contains the scripts used to generate benchmark caches analyzed in the article. One has to precise the path for the generation folder, and the benchmark folder. These scripts require the Matlab software.
 > **Warning** To generate NSGAII and DMulti-MADS caches, it can take more than three days in total.
 
-It also requires more than $36$ G of memory on hardware.
+It also requires more than 36 G of memory on hardware.

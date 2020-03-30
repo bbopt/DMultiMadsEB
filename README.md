@@ -1,4 +1,4 @@
-# DMulti-Mads algorithm
+# DMulti-Mads algorithm (Extreme Barrier version)
 
 This repertory contains the source code of the DMulti-MADS algorithm, a convergent-based blackbox multiobjective algorithm, described in the following work:
 

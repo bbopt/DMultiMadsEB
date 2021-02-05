@@ -74,7 +74,7 @@ class L2ZDT2 : public Multi_Obj_Evaluator
             NOMAD::Double g = 1;
             for (int i = 1; i < n; ++i)
             {
-                g += (9 / (n - 1)) * y[i] * y[i];
+                g += (9.0 / (n - 1)) * y[i] * y[i];
             }
             NOMAD::Double h = 1 - (f1.value() / g.value()) * (f1.value() / g.value());
             NOMAD::Double f2 = g * h;

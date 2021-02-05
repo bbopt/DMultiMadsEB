@@ -25,7 +25,7 @@ function [F] = Deb53(x);
     beta = 1;
     alpha = 4;
 
-    f(1) = 1 -exp(-4 * x(1)) * sin(5 * pi * x(1))^4;  
+    f(1) = 1 -exp(-4 * x(1)) * sin(5 * pi * x(1))^4;
 
     % gx
     gx = 0;
@@ -38,7 +38,7 @@ function [F] = Deb53(x);
     % h
     h = 0;
     if (f(1) <= beta * gx)
-        h = (1-(f(1) / (beta * gx))^alpha);    
+        h = (1-(f(1) / (beta * gx))^alpha);
     end
 
     f(2) = gx * h;

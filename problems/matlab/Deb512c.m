@@ -35,7 +35,7 @@ function [F] = Deb512c(x);
     % h
     h = 0;
     if (f(1) <= beta * gx)
-        h = (1-(f(1) / (beta * gx))^alpha);    
+        h = (1-(f(1) / (beta * gx))^alpha);
     end
 
     f(1) = 4 * x(1);

@@ -23,7 +23,7 @@ function [F] = FES1(x);
     % params
     n = 10;
 
-    f(1) = sum(abs(x - exp(((1:n)'/n).^2 /3)).^0.5);
+    f(1) = sum(abs(x - exp(((1:n)'/n).^2) /3).^0.5);
     f(2) = sum((x - 0.5 * cos(10 * pi * (1:n)'/ n) - 0.5).^2);
 
     F = f';

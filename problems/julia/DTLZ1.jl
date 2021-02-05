@@ -1,12 +1,12 @@
 # As described by K. Deb, L. Thiele, M. Laumanns and E. Zitzler in "Scalable
-# Multi-Objective Optimization Test Problems", Congress on Evolutionary·
+# Multi-Objective Optimization Test Problems", Congress on Evolutionary
 # Computation (CEC<92>2002): 825-830, 2002.
 #
 # Example DTLZ1.
 #
 # This file is part of a collection of problems developed for
 # derivative-free multiobjective optimization in
-# A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+# A. L. Custodio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 # Direct Multisearch for Multiobjective Optimization, 2010
 # written in julia.
 #

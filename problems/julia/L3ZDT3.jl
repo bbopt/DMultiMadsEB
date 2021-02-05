@@ -1,13 +1,13 @@
 # As described by K. Deb and A. Sinha and S. Kukkonen in "Multi-objective
-# test problems, linkages, and evolutionary methodologies", GECCO'06}:·
-# Proceedings of the 8th Annual Conference on Genetic and Evolutionary·
+# test problems, linkages, and evolutionary methodologies", GECCO'06}:
+# Proceedings of the 8th Annual Conference on Genetic and Evolutionary
 # Computation, 1141-1148, 2006.
 #
 # Example T3, with linkage L3.
 #
 # This file is part of a collection of problems developed for
 # derivative-free multiobjective optimization in
-# A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+# A. L. Custodio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 # Direct Multisearch for Multiobjective Optimization, 2010
 # written in julia.
 #

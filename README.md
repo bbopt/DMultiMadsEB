@@ -26,7 +26,7 @@ A simple example can be found in the *Examples/* folder.
 This folder contains an implementation of all multiobjective benchmark problems used in the article implemented in Matlab, Julia and for the Nomad (Bimads) software.
 Researchers should not reimplement all the time benchmarks.
 
-> Do you have an implementation in Python ?·
+> Do you have an implementation in Python ?
 
 Infortunately not, but feel free to do it. We recommand Julia if you want to implement a challenger algorithm. It is quite fast and free.
 

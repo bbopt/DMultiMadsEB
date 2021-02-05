@@ -1,12 +1,12 @@
 # As described by Huband et al. in "A Scalable Multi-objective Test Problem
-# Toolkit", in C. A. Coello Coello et al. (Eds.): EMO 2005, LNCS 3410,·
+# Toolkit", in C. A. Coello Coello et al. (Eds.): EMO 2005, LNCS 3410,
 # pp. 280<96>295, 2005, Springer-Verlag Berlin Heidelberg 2005.
 #
 # Example I3.
 #
 # This file is part of a collection of problems developed for
 # derivative-free multiobjective optimization in
-# A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+# A. L. Custodio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 # Direct Multisearch for Multiobjective Optimization, 2010
 # written in julia.
 #

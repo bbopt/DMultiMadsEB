@@ -1,7 +1,7 @@
 # As described by F. Kursawe in "A variant of evolution strategies for
-# vector optimization", in H. P. Schwefel and R. Männer, editors, Parallel·
-# Problem Solving from Nature, 1st Workshop, PPSN I, volume 496 of Lecture·
-# Notes in Computer Science, pages 193-197, Berlin, Germany, Oct 1991,·
+# vector optimization", in H. P. Schwefel and R. Manner, editors, Parallel
+# Problem Solving from Nature, 1st Workshop, PPSN I, volume 496 of Lecture
+# Notes in Computer Science, pages 193-197, Berlin, Germany, Oct 1991,
 # Springer-Verlag.
 #
 # In the above paper the variables bounds were not set.
@@ -9,7 +9,7 @@
 #
 # This file is part of a collection of problems developed for
 # derivative-free multiobjective optimization in
-# A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+# A. L. Custodio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 # Direct Multisearch for Multiobjective Optimization, 2010
 # written in julia.
 #

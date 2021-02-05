@@ -18,11 +18,6 @@
     @test length(madsI.cache.data) == 640
     @test length(madsI.barrier.bestFeasiblePoints) == 1
 
-    println(madsI.barrier.bestFeasiblePoints)
-    #println(madsI.cache.data[312])
-    #print(madsI.cache.data[884])
-    #println(madsI.cache.data[18])
-    #saveCache(madsI.cache, "history.txt")
 end
 
 @testset "Mads algorithm : a simple example 2 objectives" begin
@@ -44,16 +39,16 @@ end
     stop = solve!(madsI, [[1.5; 1.5]])
     @test stop == MAX_BB_REACHED
     @test length(madsI.cache.data) == 100
-    @test length(madsI.barrier.bestFeasiblePoints) == 15
+    @test length(madsI.barrier.bestFeasiblePoints) == 18
 end
 
 @testset "Mads algorithm : a simple example 3 objectives" begin
 
     Viennet = BBProblem(x -> [0.5 * (x[1]^2 + x[2]^2) + sin(x[1]^2 + x[2]^2);
-                          (3 * x[1] - 2 * x[2] + 4)^2 / 8 + (x[1] - x[2] + 1)^2 / 27 + 15;
-                          1 / (x[1]^2 + x[2]^2 + 1) - 1.1 * exp(-(x[1]^2 + x[2]^2))],
-                    2, 3, [OBJ; OBJ; OBJ], lvar=[-3.0; -3.0], uvar=[3.0; 3.0],
-                    name="Viennet")
+                              (3 * x[1] - 2 * x[2] + 4)^2 / 8 + (x[1] - x[2] + 1)^2 / 27 + 15;
+                              1 / (x[1]^2 + x[2]^2 + 1) - 1.1 * exp(-(x[1]^2 + x[2]^2))],
+                        2, 3, [OBJ; OBJ; OBJ], lvar=[-3.0; -3.0], uvar=[3.0; 3.0],
+                        name="Viennet")
 
     @test Viennet.meta.name == "Viennet"
     @test Viennet.meta.typeoutputs == [OBJ; OBJ; OBJ]
@@ -67,6 +62,48 @@ end
     stop = solve!(madsI, [[1.5; 1.5]])
     @test stop == MAX_BB_REACHED
     @test length(madsI.cache.data) == 100
-    @test length(madsI.barrier.bestFeasiblePoints) == 7
+    @test length(madsI.barrier.bestFeasiblePoints) == 11
+
+end
+
+@testset "Mads algorithm : a more complicated example 3 objectives" begin
+
+    function DTLZ3_fct(x)
+        # params
+        M = 3 # number of objectives
+        n = 12 # number of variables
+        k = n - M + 1
+
+        gx = 100 * (k + sum((x[M:n] .- 0.5).^2 - cos.(20 * pi * (x[M:n] .- 0.5))));
+
+        # functions
+        ff = ones(M);
+        ff[1] = (1 + gx) * prod(cos.(0.5 * pi * x[1:M-1]));
+        for i = 2:M
+            ff[i] = (1 + gx) * prod(cos.(0.5 * pi * x[1:M-i])) * sin(0.5 * pi * x[M - i + 1]);
+        end
+
+        return ff
+    end
+
+
+    DTLZ3 = BBProblem(x -> DTLZ3_fct(x),
+                      12, 3, [OBJ; OBJ; OBJ], lvar=zeros(12), uvar=ones(12),
+                      name="DTLZ3")
+
+    @test DTLZ3.meta.name == "DTLZ3"
+    @test DTLZ3.meta.typeoutputs == [OBJ; OBJ; OBJ]
+    @test DTLZ3.meta.ninputs == 12
+    @test DTLZ3.meta.noutputs == 3
+    @test DTLZ3.meta.lvar ≈ zeros(12)
+    @test DTLZ3.meta.uvar ≈ ones(12)
+
+    madsI = MadsInstance(DTLZ3; neval_bb_max=20000)
+
+    start_points = [DTLZ3.meta.lvar[:,] +  (j - 1) * (DTLZ3.meta.uvar[:,] - DTLZ3.meta.lvar[:,]) / (DTLZ3.meta.ninputs - 1)  for j in 1:DTLZ3.meta.ninputs]
+    stop = solve!(madsI, start_points, opportunistic=false)
+    @test stop == MAX_BB_REACHED
+    @test length(madsI.cache.data) == 20000
+    @test length(madsI.barrier.bestFeasiblePoints) == 334
 
 end

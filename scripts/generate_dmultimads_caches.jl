@@ -334,50 +334,53 @@ Distributed.@everywhere function run_problem(id_prob)
     repertory_name = "" # enter the repertory path where you want to store your generated caches
     #for seed in [1234]
     for seed in [1, 4734, 6652, 3507, 1121, 3500, 5816, 2006, 9622, 6117]
-        #for success_criteria in [true]
-        for success_criteria in [true, false]
-            for opportunistic_strategy in [true, false]
-                #for spread_selection in [true]
+        for w in [3,5]
+            #for success_criteria in [true]
+            for success_criteria in [true, false]
+                for opportunistic_strategy in [true, false]
+                    #for spread_selection in [true]
                     for spread_selection in [true, false]
-                    # define problem
-                    prob = BBProblem(x -> mxcall(Symbol(name_prob), 1, x), 
-                                     dict_problems[name_prob][1], 
-                                     dict_problems[name_prob][2],
-                                     repeat([LightMads.OBJ], dict_problems[name_prob][2]),
-                                     lvar=dict_problems[name_prob][3],
-                                     uvar=dict_problems[name_prob][4],
-                                     name=name_prob)
+                        # define problem
+                        prob = BBProblem(x -> mxcall(Symbol(name_prob), 1, x), 
+                                         dict_problems[name_prob][1], 
+                                         dict_problems[name_prob][2],
+                                         repeat([LightMads.OBJ], dict_problems[name_prob][2]),
+                                         lvar=dict_problems[name_prob][3],
+                                         uvar=dict_problems[name_prob][4],
+                                         name=name_prob)
 
-                    mI = MadsInstance(prob; neval_bb_max = 20000, seed = seed)
+                        mI = MadsInstance(prob; neval_bb_max = 20000, seed = seed)
+                        mI.gap_selection = w
 
-                    # define starting points
-                    start_points = [];
-                    if prob.meta.ninputs == 1
-                        start_points = [(prob.meta.lvar[:,] + prob.meta.uvar[:,]) / 2]
-                    else 
-                        start_points = [prob.meta.lvar[:,] +  (j - 1) * (prob.meta.uvar[:,] - prob.meta.lvar[:,]) / (prob.meta.ninputs - 1)  for j in 1:prob.meta.ninputs]
+                        # define starting points
+                        start_points = [];
+                        if prob.meta.ninputs == 1
+                            start_points = [(prob.meta.lvar[:,] + prob.meta.uvar[:,]) / 2]
+                        else 
+                            start_points = [prob.meta.lvar[:,] +  (j - 1) * (prob.meta.uvar[:,] - prob.meta.lvar[:,]) / (prob.meta.ninputs - 1)  for j in 1:prob.meta.ninputs]
+                        end
+                        solve!(mI, start_points, opportunistic=opportunistic_strategy,
+                               spread_flag=spread_selection,
+                               strict_mode=success_criteria, 
+                               display=false)
+                        # types of flags
+                        success_indic = ""
+                        if success_criteria == false
+                            success_indic = "No"
+                        end
+                        opportunistic_indic = ""
+                        if opportunistic_strategy == false
+                            opportunistic_indic = "No"
+                        end
+                        spread_indic = ""
+                        if spread_selection == false
+                            spread_indic = "No"
+                        end
+                        configuration_solver_string = "_dmMads" * success_indic * "Strict" * opportunistic_indic * "Op" * spread_indic * "Spread_"
+                        println(configuration_solver_string)
+                        #saveCache(mI.cache, repertory_name * name_prob * "_dmultimadsline_" * string(seed) * ".txt")
+                        saveCache(mI.cache, repertory_name * name_prob * configuration_solver_string * string(seed) * ".txt")
                     end
-                    solve!(mI, start_points, opportunistic=opportunistic_strategy,
-                           spread_flag=spread_selection,
-                           strict_mode=success_criteria, 
-                           display=false)
-                    # types of flags
-                    success_indic = ""
-                    if success_criteria == false
-                        success_indic = "No"
-                    end
-                    opportunistic_indic = ""
-                    if opportunistic_strategy == false
-                        opportunistic_indic = "No"
-                    end
-                    spread_indic = ""
-                    if spread_selection == false
-                        spread_indic = "No"
-                    end
-                    configuration_solver_string = "_dmMads" * success_indic * "Strict" * opportunistic_indic * "Op" * spread_indic * "Spread_"
-                    println(configuration_solver_string)
-                    #saveCache(mI.cache, repertory_name * name_prob * "_dmultimadsline_" * string(seed) * ".txt")
-                    saveCache(mI.cache, repertory_name * name_prob * configuration_solver_string * string(seed) * ".txt")
                 end
             end
         end

@@ -1,12 +1,12 @@
 # As described by Huband et al. in "A review of multiobjective test problems
-# and a scalable test problem toolkit", IEEE Transactions on Evolutionary·
+# and a scalable test problem toolkit", IEEE Transactions on Evolutionary
 # Computing 10(5): 477-506, 2006.
 #
 # Example WFG1
 #
 # This file is part of a collection of problems developed for
 # derivative-free multiobjective optimization in
-# A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+# A. L. Custodio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 # Direct Multisearch for Multiobjective Optimization, 2010
 # implemented in julia.
 #
@@ -46,8 +46,7 @@ function WFG1(x)
     CC = 0.85; 
     t2 = ones(n);
     t2[1:k] = t1[1:k];
-    t2[k+1:n] = AA .+ min.(0, floor.(t1[k+1:n] .- BB)) .* ( AA * (BB .- t1[k+1:n])) ./ BB 
-    - min.(0, floor.(CC .- t1[k+1:n])) * (1 - AA) .* (t1[k+1:n] .- CC) / (1-CC);
+    t2[k+1:n] = AA .+ min.(0, floor.(t1[k+1:n] .- BB)) .* ( AA * (BB .- t1[k+1:n])) ./ BB - min.(0, floor.(CC .- t1[k+1:n])) * (1 - AA) .* (t1[k+1:n] .- CC) / (1-CC);
 
     # third level mapping
     AAA = 0.02;

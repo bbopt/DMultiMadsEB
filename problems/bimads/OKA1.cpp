@@ -32,7 +32,7 @@ public:
         
         NOMAD::Double f1 = tmp_x1;
         NOMAD::Double f2 = sqrt(2 * PI) - sqrt(abs(tmp_x1.value())) 
-            + 2 * pow(abs(tmp_x2.value() - 3 * cos(tmp_x1.value()) - 3), 1/3);
+            + 2 * pow(abs(tmp_x2.value() - 3 * cos(tmp_x1.value()) - 3), 1.0/3);
 
         x.set_bb_output(0, f1); // objective 1
         x.set_bb_output(1, f2); // objective 2

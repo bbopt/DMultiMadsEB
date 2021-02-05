@@ -175,24 +175,8 @@ function projectOnMesh(m :: Gmesh, elt :: Vector{Float64}, pollCenter :: Vector{
     δ = getMeshSizeParameter(m)
     candidate = zeros(m.n, )
     for i in 1 : m.n
-        #val = 0.0
-        #if (elt[i] - pollCenter[i]) >= 0
-        #    val = δ[i] * ceil((elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #else
-        #    val = δ[i] * floor((elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #end
-        #candidate[i] = val
         # stay simple: will maybe changed followingly
         candidate[i] = δ[i] * round((elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #val1 = δ[i] * round((elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #val2 = δ[i] * round(1 + (elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #val1 = δ[i] * floor((elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #val2 = δ[i] * ceil((elt[i] - pollCenter[i]) / δ[i]) + pollCenter[i]
-        #if abs(val1 - elt[i]) <= abs(val2 - elt[i])
-        #    candidate[i] = val1
-        #else
-        #    candidate[i] = val2
-        #end 
     end
     return candidate
 end

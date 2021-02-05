@@ -1,13 +1,13 @@
 # As described by K. Deb and A. Sinha and S. Kukkonen in "Multi-objective
-# test problems, linkages, and evolutionary methodologies", GECCO'06}:·
-# Proceedings of the 8th Annual Conference on Genetic and Evolutionary·
+# test problems, linkages, and evolutionary methodologies", GECCO'06}:
+# Proceedings of the 8th Annual Conference on Genetic and Evolutionary
 # Computation, 1141-1148, 2006.
 #
 # Example T3, with linkage L2.
 #
 # This file is part of a collection of problems developed for
 # derivative-free multiobjective optimization in
-# A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+# A. L. Custodio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 # Direct Multisearch for Multiobjective Optimization, 2010
 # written in julia.
 #
@@ -57,7 +57,7 @@ function L2ZDT3(x)
     y = M * x;
     f1 = y[1]^2;
     gx = 1 + 9 / (m -1) * sum(y[2:m].^2);
-    h = 1 - (f1 / gx)^2 -(f1 / gx) * sin(10 * pi *f1) ;
+    h = 1 - sqrt(f1 / gx) -(f1 / gx) * sin(10 * pi *f1) ;
 
     f2 = gx * h;
 

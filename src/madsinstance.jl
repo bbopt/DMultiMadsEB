@@ -24,6 +24,7 @@ mutable struct MadsInstance
     # definition parameters of a mads instance
     bbproblem :: BBProblem
     min_tol :: Float64 # minimum tolerance
+    gap_selection:: Int # quantifiable gap to select points
     neval_bb_max :: Int # number of maximum blackbox calls
 
     # storing parameters
@@ -49,8 +50,9 @@ mutable struct MadsInstance
         n = bb.meta.ninputs
         m = count(t_o->(t_o == OBJ), bb.meta.typeoutputs)
 
-        return new(bb, 
-                   min_tol, 
+        return new(bb,
+                   min_tol,
+                   0,
                    neval_bb_max,
                    Barrier(m),
                    Cache((n, bb.meta.noutputs)),
@@ -145,7 +147,12 @@ function getpollcenter(mI :: MadsInstance; spread_flag :: Bool = true)::Tuple{In
 
     # candidates with norm inf
     (max_Δ, id_Δ) = maximum((norm(getFrameSizeParameter(mI.cache.data[i[1]].mesh), Inf), i) for i in idCandidates)
-    idCandidates = [i for i in idCandidates if norm(getFrameSizeParameter(mI.cache.data[i[1]].mesh), Inf) == max_Δ]
+    #  idCandidates = [i for i in idCandidates if norm(getFrameSizeParameter(mI.cache.data[i[1]].mesh), Inf) == max_Δ]
+
+    idCandidates = [i for i in idCandidates if
+                    (log10(norm(getMeshSizeParameter(mI.cache.data[id_Δ[1]].mesh), Inf) /
+                           norm(getMeshSizeParameter(mI.cache.data[i[1]].mesh), Inf)) <= mI.gap_selection)
+                    && !checkMeshForStopping(mI.cache.data[i[1]].mesh)]# <=3
 
     #println("Candidates with norm max = ", idCandidates)
 
@@ -156,6 +163,11 @@ function getpollcenter(mI :: MadsInstance; spread_flag :: Bool = true)::Tuple{In
     #println("Candidates with norm 2 = ", idCandidates)
 
     #println("Maximum frame size parameter = ", string(getFrameSizeParameter(mI.cache.data[id_Δ].mesh)))
+
+    # if all points are under the minimmum mesh size
+    if isempty(idCandidates)
+        return id_Δ
+    end
 
     if spread_flag == false
         return idCandidates[1]
@@ -176,6 +188,35 @@ function getpollcenter(mI :: MadsInstance; spread_flag :: Bool = true)::Tuple{In
             return idCandidates[2]
         end
     end
+
+    #=
+    # hack: check if one of the points with maximum mesh size is an extreme point
+    # get ideal point
+    id_poll_extent = Nothing
+    ideal_v = Inf * ones(mI.barrier.nb_obj, 1)
+    for elt in mI.barrier.bestFeasiblePoints
+        ideal_v = min.(elt[2].f, ideal_v)
+    end
+
+    # check one point is an extreme point
+    extreme_fval = -Inf
+    for obj in 1: mI.barrier.nb_obj
+        f_array = [(mI.barrier.bestFeasiblePoints[i].f[obj], i) for i in idCandidates]
+        f_array = sort(f_array)
+    #
+        # get minimum point according to one objective
+        fmin = f_array[1][1]
+        if (fmin <= ideal_v[obj]) && (extreme_fval <= fmin)
+            id_poll_extent = f_array[1][2]
+            extreme_fval = fmin
+        end
+    end
+    if id_poll_extent != Nothing
+        return id_poll_extent
+    #  else
+    #      println("No extension strategy")
+    end
+    =#
 
     # more than two points
     id_poll = Nothing

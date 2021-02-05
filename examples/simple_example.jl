@@ -31,6 +31,9 @@ DTLZ3 = BBProblem(x -> DTLZ3_fct(x),
 # create mads instance
 madsI = MadsInstance(DTLZ3; neval_bb_max=1000)
 
+# fix gap selection
+madsI.gap_selection = 3
+
 # choose start points
 start_points = [DTLZ3.meta.lvar[:,] +  (j - 1) * (DTLZ3.meta.uvar[:,] - DTLZ3.meta.lvar[:,]) / (DTLZ3.meta.ninputs - 1)  for j in 1:DTLZ3.meta.ninputs]
 

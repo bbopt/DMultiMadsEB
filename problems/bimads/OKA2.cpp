@@ -29,8 +29,8 @@ public:
     {
         NOMAD::Double f1 = x[0];
         NOMAD::Double f2 = 1 - (x[0] + PI) * (x[0] + PI) / (4 * PI * PI) 
-            + pow( abs(x[1].value() - 5 * cos(x[0].value())), 1/3 )
-            + pow( abs(x[2].value() - 5 * sin(x[0].value())), 1/3 );
+            + pow( abs(x[1].value() - 5 * cos(x[0].value())), 1.0/3 )
+            + pow( abs(x[2].value() - 5 * sin(x[0].value())), 1.0/3 );
 
         x.set_bb_output(0, f1); // objective 1
         x.set_bb_output(1, f2); // objective 2

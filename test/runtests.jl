@@ -1,4 +1,4 @@
-using Test, Printf, LinearAlgebra, Random, DMultiMadsEB, Plots
+using Test, Printf, LinearAlgebra, Random, DMultiMadsEB
 
 include("bbproblem.jl")
 include("gmesh.jl")

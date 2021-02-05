@@ -56,7 +56,7 @@ function [F] = L2ZDT3(x);
     y = M * x;
     f(1) = y(1)^2;
     gx = 1 + 9 / (m -1) * sum(y(2:m).^2);
-    h = 1 - (f(1) / gx)^2 -(f(1) / gx) * sin(10 * pi *f(1)) ;
+    h = 1 - sqrt(f(1) / gx) -(f(1) / gx) * sin(10 * pi *f(1)) ;
 
     f(2) = gx * h;
 

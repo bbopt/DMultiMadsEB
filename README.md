@@ -2,7 +2,7 @@
 
 This repertory contains the source code of the DMulti-MADS algorithm, a convergent-based blackbox multiobjective algorithm, described in the following work:
 
-> Jean Bigeon, Sébastien Le Digabel and Ludovic Salomon, *DMulti-MADS: Mesh adaptive direct multisearch for blackbox multiobjective optimization*
+> Jean Bigeon, Sébastien Le Digabel and Ludovic Salomon, *DMulti-MADS: Mesh adaptive direct multisearch for bound-constrained blackbox multiobjective optimization*
 
 **Warning** : This code has no vocation to be used in industry, see [Nomad](https://www.gerad.ca/nomad) for a more robust implementation of state-of-the-art blackbox method.
 It aims at guaranteeing the reproducibility of the experiments described in this work.

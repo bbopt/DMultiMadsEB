@@ -58,11 +58,11 @@ function [F] = WFG5(x);
 
     % Define objective function function h
     h = ones(M, 1);
-    h(1) = prod(sin(xtmp(1:M-1) * pi^2));
+    h(1) = prod(sin(xtmp(1:M-1) * (pi/2)));
     for m=2:M-1
-        h(m) = prod(sin(xtmp(1:M-1) * pi^2)) * cos(xtmp(M-m+1) * pi^2);
+        h(m) = prod(sin(xtmp(1:M-1) * (pi/2))) * cos(xtmp(M-m+1) * (pi/2));
     end
-    h(M) = cos(xtmp(1) * pi^2);
+    h(M) = cos(xtmp(1) * (pi/2));
 
     % The objective functions
     f(1:M) = xtmp(M) + S(1:M) .* h(1:M);

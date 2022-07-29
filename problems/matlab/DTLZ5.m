@@ -1,12 +1,12 @@
 % As described by K. Deb, L. Thiele, M. Laumanns and E. Zitzler in "Scalable
-% Multi-Objective Optimization Test Problems", Congress on Evolutionary·
+% Multi-Objective Optimization Test Problems", Congress on EvolutionaryÂ·
 % Computation (CEC<92>2002): 825-830, 2002.
 %
 % Example DTLZ5.
 %
 % This file is part of a collection of problems developed for
 % derivative-free multiobjective optimization in
-% A. L. Custódio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
+% A. L. CustÃ³dio, J. F. A. Madeira, A. I. F. Vaz, and L. N. Vicente,
 % Direct Multisearch for Multiobjective Optimization, 2010
 % written in matlab.
 %
@@ -23,7 +23,7 @@ function [F] = DTLZ5(x);
     k = n - M + 1;
 
     % g(x)
-    gx = sum((x(M:n) - 0.5).^2 );
+    gx = sum(x(M:n).^0.1 );
 
     % theta
     theta = (pi / 2) * (1 + 2 * gx * x) / (2 * (1 + gx));

@@ -7,6 +7,8 @@ This repertory contains the source code of the DMulti-MADS algorithm, a converge
 **Warning** : This code has no vocation to be used in industry, see [Nomad](https://www.gerad.ca/nomad) for a more robust implementation of state-of-the-art blackbox method.
 It aims at guaranteeing the reproducibility of the experiments described in this work.
 
+**NB** : This code contains a bug (the poll center is chosen according to other elements of the Pareto front approximation which satisfy the frame selection criterion, and not according to **all** other elements of the Pareto front approximation, as it is described in the paper), which impacts the real performance of the algorithm. For reproducibility purposes, this bug is not patched. To obtain a more performant version of this algorithm (for comparison or to solve your problems, in this last case, to your own risks), please use the implementation proposed in https://github.com/bbopt/dmultimadspb.
+
 ## Use
 
 To use DMulti-MADS, Julia >= 1.4 is required. One can type the following commands, at the root of this repertory:

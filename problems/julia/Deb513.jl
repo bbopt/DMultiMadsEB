@@ -19,7 +19,7 @@ function Deb513(x)
 
     # params
     beta = 1
-    alpha = 4
+    alpha = 2
     q = 4
 
     f1 = x[1]

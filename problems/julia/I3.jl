@@ -67,11 +67,11 @@ function I3(x)
 
     # Define objective function function h
     h = ones(M);
-    h[1] = prod(sin.(pi^2 * xtmp[1:M-1]));
+    h[1] = prod(sin.((pi/2) * xtmp[1:M-1]));
     for m in 2:M-1
-        h[m] = prod(sin.(pi^2 * xtmp[1:M-m])) * cos(xtmp[M-m + 1] * pi^2);
+        h[m] = prod(sin.((pi/2) * xtmp[1:M-m])) * cos(xtmp[M-m + 1] * (pi/2));
     end
-    h[M] = cos(xtmp[1] * pi^2);
+    h[M] = cos(xtmp[1] * (pi/2));
 
     # The objective functions
     f = xtmp[M] .+ S[1:M] .* h[1:M]; 

@@ -24,7 +24,7 @@ function DTLZ5(x)
     k = n - M + 1;
 
     # g(x)
-    gx = sum((x[M:n] .- 0.5).^2 );
+    gx = sum(x[M:n].^0.1 );
 
     # theta
     theta = (pi / 2) * (1 .+ 2 * gx * x) / (2 * (1 + gx));

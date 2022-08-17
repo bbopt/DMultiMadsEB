@@ -64,7 +64,7 @@ for i=1:M-1
     t3(i) = t3(i) / (((i*k/(M-1))-((i-1)*k/(M-1)+1)+1)/(k/(M-1))*ceil(k/(M-1)/2)*(1+2*k/(M-1)-2*ceil(k/(M-1)/2)));
 end
 for ii=k+1:n
-   t3(M) = t3(M) + t2(M);
+   t3(M) = t3(M) + t2(ii);
    for jj=0:l-2
     t3(M) = t3(M) + abs(t2(ii) - t2(k+1+ mod(ii+jj-(k+1)+1, n-k)));
    end

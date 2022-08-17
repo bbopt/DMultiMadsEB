@@ -51,7 +51,7 @@ function [F] = WFG6(x);
         t2(i) = t2(i) / (((i*k/(M-1))-((i-1)*k/(M-1)+1)+1)/(k/(M-1))*ceil(k/(M-1)/2)*(1+2*k/(M-1)-2*ceil(k/(M-1)/2)));
     end
     for ii=k+1:n
-        t2(M) = t2(M) + t1(M);
+        t2(M) = t2(M) + t1(ii);
         for jj=0:l-2
             t2(M) = t2(M) + abs(t1(ii) - t1(k+1+ mod(ii+jj-(k+1)+1, n-k)));
         end

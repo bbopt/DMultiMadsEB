@@ -42,7 +42,7 @@ function WFG2(x)
 
     # second level mapping
     AA = 2;
-    t2 = ones(k + div(l, 2));
+    t2 = zeros(k + div(l, 2));
     t2[1:k] = t1[1:k];
     for i in k+1:k + div(l, 2)
         for ii in (k+2*(i-k)-1):(k+2*(i-k))

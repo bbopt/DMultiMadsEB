@@ -41,7 +41,7 @@ function [F] = WFG2(x);
 
     % second level mapping
     AA = 2;
-    t2 = ones(k + l/2, 1);
+    t2 = zeros(k + l/2, 1);
     t2(1:k) = t1(1:k);
     for i=k+1:k + l/2
         for ii=(k+2*(i-k)-1):(k+2*(i-k))

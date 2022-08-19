@@ -73,7 +73,7 @@ function WFG1(x)
     h = ones(M);
     h[1] = prod((1 .- cos.((pi/2) * xtmp[1:M-1])));
     for m in 2:M-1
-        h[m] = prod( (1 .- cos.((pi/2) * xtmp[1:M-1])) ) * (1 - sin(xtmp[M-m+1] * (pi/2)));
+        h[m] = prod( (1 .- cos.((pi/2) * xtmp[1:M-m])) ) * (1 - sin(xtmp[M-m+1] * (pi/2)));
     end
     h[M] = (1 - xtmp[1] - (cos(2 * AAAA * pi * xtmp[1] + (pi/2))) / (2 * AAAA * pi))^alpha;
 

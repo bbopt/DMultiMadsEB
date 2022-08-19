@@ -70,7 +70,7 @@ function WFG8(x)
     h = ones(M);
     h[1] = prod(sin.(xtmp[1:M-1] * (pi/2)));
     for m in 2:M-1
-        h[m] = prod(sin.(xtmp[1:M-1] * (pi/2))) * cos(xtmp[M-m+1] * (pi/2));
+        h[m] = prod(sin.(xtmp[1:M-m] * (pi/2))) * cos(xtmp[M-m+1] * (pi/2));
     end
     h[M] = cos(xtmp[1] * (pi/2));
 

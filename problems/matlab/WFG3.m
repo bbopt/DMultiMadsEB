@@ -72,7 +72,7 @@ function [F] = WFG3(x);
     h = ones(M, 1);
     h(1) = prod(xtmp(1:M-1));
     for m=2:M-1
-        h(m) = prod(xtmp(1:M-1)) * (1 - xtmp(M-m+1));
+        h(m) = prod(xtmp(1:M-m)) * (1 - xtmp(M-m+1));
     end
     h(M) = 1 - xtmp(1);
 

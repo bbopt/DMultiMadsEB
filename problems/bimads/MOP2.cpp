@@ -37,9 +37,9 @@ class MOP2 : public Multi_Obj_Evaluator {
             NOMAD::Double f2 = 0;
             NOMAD::Double tmp_f2 = 0;
             for (int i = 0 ; i < n; ++i) {
-                tmp_f1 += - (x[i] + 1 / sqrt(n)) * (x[i] + 1 / sqrt(n));  
+                tmp_f2 += - (x[i] + 1 / sqrt(n)) * (x[i] + 1 / sqrt(n));  
             }
-            f1 = 1 - exp(tmp_f2.value());
+            f2 = 1 - exp(tmp_f2.value());
 
             x.set_bb_output  ( 0 , f1); // objective 1
             x.set_bb_output  ( 1 , f2); // objective 2

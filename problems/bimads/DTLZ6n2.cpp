@@ -39,7 +39,7 @@ public:
     {
       g += x[i];
     }
-    g *= (9 / k);
+    g *= (9.0 / k);
     g += 1;
 
     // objective functions

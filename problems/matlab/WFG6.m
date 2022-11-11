@@ -55,8 +55,8 @@ function [F] = WFG6(x);
         for jj=0:l-2
             t2(M) = t2(M) + abs(t1(ii) - t1(k+1+ mod(ii+jj-(k+1)+1, n-k)));
         end
-        t2(M) = t2(M) / (((n-k)/l)*ceil(l/2)*(1+2*l-2*ceil(l/2)));
     end
+    t2(M) = t2(M) / (((n-k)/l)*ceil(l/2)*(1+2*l-2*ceil(l/2)));
 
     % Define objective function variables
     xtmp = ones(M, 1);

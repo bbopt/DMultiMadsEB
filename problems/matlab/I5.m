@@ -68,8 +68,8 @@ for ii=k+1:n
    for jj=0:l-2
     t3(M) = t3(M) + abs(t2(ii) - t2(k+1+ mod(ii+jj-(k+1)+1, n-k)));
    end
-   t3(M) = t3(M) / (((n-k)/l)*ceil(l/2)*(1+2*l-2*ceil(l/2)));
 end
+t3(M) = t3(M) / (((n-k)/l)*ceil(l/2)*(1+2*l-2*ceil(l/2)));
 
 % Define objective function variables
 xtmp = ones(M, 1);

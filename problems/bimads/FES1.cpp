@@ -31,12 +31,12 @@ public:
     NOMAD::Double f1 = 0;
     for (int i = 0; i < n; ++i)
     {
-      f1 += pow(abs(x[i].value() - exp(((i + 1) / n) * ((i + 1) / n)) / 3), 0.5);
+      f1 += pow(abs(x[i].value() - exp(((i + 1.0) / n) * ((i + 1.0) / n)) / 3), 0.5);
     }
     NOMAD::Double f2 = 0;
     for (int i = 0; i < n; ++i)
     {
-      NOMAD::Double tmp = x[i] - 0.5 * cos(10 * PI * (i + 1) / n) - 0.5;
+      NOMAD::Double tmp = x[i] - 0.5 * cos(10 * PI * (i + 1.0) / n) - 0.5;
       f2 += tmp * tmp;
     }
 

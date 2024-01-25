@@ -19,7 +19,7 @@
 function MOP1(x)
 
     # functions
-    return [x[1];
+    return [x[1]^2;
             (x[1] - 2)^2]
 
 end 

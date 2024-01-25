@@ -18,7 +18,7 @@
 %
 function [F] = MOP1(x);
     % functions
-    f(1) = x(1);
+    f(1) = x(1)^2;
     f(2) = (x(1) - 2)^2;
 
     F = f';

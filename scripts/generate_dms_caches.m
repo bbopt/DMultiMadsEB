@@ -371,7 +371,7 @@ clear;
 
 % MOP1 function
 [Plist,Flist,alfa,func_eval] = dms(1,'MOP1','dms_paretofront_BK1.txt',...
-                                'MOP1_dms.txt',[], -10^(-5) * ones(1, 1), 10^(5) * ones(1, 1), []);
+                                'MOP1_dms.txt',[], -10^(5) * ones(1, 1), 10^(5) * ones(1, 1), []);
 clear;
 
 % MOP2 function

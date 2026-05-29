@@ -232,7 +232,7 @@ def run_nsgaii_solver_pb(name):
     dict_problems["MLF2"] = (eng.MLF2, 2, 2, -2 * np.ones(2), 2 * np.ones(2))
 
     # MOP1 function
-    dict_problems["MOP1"] = (eng.MOP1, 1, 2, -10 ** (-5) * np.ones(1), 10 ** (5) * np.ones(1))
+    dict_problems["MOP1"] = (eng.MOP1, 1, 2, -10 ** (5) * np.ones(1), 10 ** (5) * np.ones(1))
 
     # MOP2 function
     dict_problems["MOP2"] = (eng.MOP2, 4, 2, -4 * np.ones(4), 4 * np.ones(4))

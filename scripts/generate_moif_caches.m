@@ -369,7 +369,7 @@ clear;
 
 % MOP1 function
 [Plist,Flist,alfa,func_eval] = moif(1,@MOP1,...
-                                'MOP1_moif.txt',[], -10^(-5) * ones(1, 1), 10^(5) * ones(1, 1));
+                                'MOP1_moif.txt',[], -10^(5) * ones(1, 1), 10^(5) * ones(1, 1));
 clear;
 
 % MOP2 function
